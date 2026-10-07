@@ -39,6 +39,12 @@ inline void SetWindowMargins(not_null<QWidget*> widget, const QMargins &margins)
 inline void ShowWindowMenu(not_null<QWidget*> widget, const QPoint &point) {
 }
 
+inline void RestoreWindow(not_null<QWidget*> widget) {
+}
+
+inline void EnsureAppWindow(not_null<QWidget*> widget) {
+}
+
 inline void FixPopupMenuNativeEmojiPopup(not_null<PopupMenu*> menu) {
 }
 

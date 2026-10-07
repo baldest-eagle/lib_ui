@@ -66,6 +66,9 @@ void DrainMainQueue(); // Needed only if UseMainQueueGeneric() is false.
 void SetWindowMargins(not_null<QWidget*> widget, const QMargins &margins);
 void ShowWindowMenu(not_null<QWidget*> widget, const QPoint &point);
 
+void RestoreWindow(not_null<QWidget*> widget);
+void EnsureAppWindow(not_null<QWidget*> widget);
+
 void FixPopupMenuNativeEmojiPopup(not_null<PopupMenu*> menu);
 
 struct SystemTextReplaceResult {

@@ -36,6 +36,12 @@ inline constexpr bool UseMainQueueGeneric() {
 	return true;
 }
 
+inline void RestoreWindow(not_null<QWidget*> widget) {
+}
+
+inline void EnsureAppWindow(not_null<QWidget*> widget) {
+}
+
 inline void FixPopupMenuNativeEmojiPopup(not_null<PopupMenu*> menu) {
 }
 

@@ -51,6 +51,26 @@ void ShowWindowMenu(not_null<QWidget*> widget, const QPoint &point) {
 		MAKELPARAM(p.x, p.y));
 }
 
+void RestoreWindow(not_null<QWidget*> widget) {
+	const auto handle = reinterpret_cast<HWND>(widget->winId());
+	if (handle) {
+		ShowWindow(handle, SW_RESTORE);
+	}
+}
+
+void EnsureAppWindow(not_null<QWidget*> widget) {
+	widget->createWinId();
+	const auto handle = reinterpret_cast<HWND>(widget->winId());
+	if (!handle) {
+		return;
+	}
+	const auto style = GetWindowLongPtr(handle, GWL_EXSTYLE);
+	SetWindowLongPtr(
+		handle,
+		GWL_EXSTYLE,
+		style | WS_EX_APPWINDOW);
+}
+
 void FixPopupMenuNativeEmojiPopup(not_null<PopupMenu*> menu) {
 	// Windows native emoji selector, that can be called by Win+. shortcut,
 	// is behaving strangely within an input field in a popup menu.
