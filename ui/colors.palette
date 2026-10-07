@@ -568,6 +568,7 @@ callAnswerRipple: #52b149; // phone call popup answer button ripple effect
 callAnswerBgOuter: #50eb4126; // phone call popup answer button outer ripple effect
 callHangupBg: #d75a5a; // phone call popup hangup button background
 callHangupRipple: #c04646; // phone call popup hangup button ripple effect
+callCancelRipple: #c04646; // phone call popup cancel button ripple effect
 callMuteRipple: #ffffff12; // phone call popup mute mic and camera ripple effect
 
 groupCallBg: #1a2026; // group call popup background
