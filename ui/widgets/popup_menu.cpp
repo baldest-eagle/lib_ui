@@ -91,7 +91,10 @@ void PopupMenu::init() {
 
 	setAttribute(Qt::WA_NoSystemBackground, true);
 
-	_useTransparency = Platform::TranslucentWindowsSupported();
+	// Windows: translucent popups paint only the hovered cell, use the opaque path.
+	_useTransparency = ::Platform::IsWindows()
+		? false
+		: Platform::TranslucentWindowsSupported();
 	if (_useTransparency) {
 		setAttribute(Qt::WA_TranslucentBackground, true);
 	} else {
@@ -461,7 +464,7 @@ void PopupMenu::handleMouseMove(QPoint globalPosition) {
 void PopupMenu::handleMousePress(QPoint globalPosition) {
 	if (_parent) {
 		_parent->forwardMousePress(globalPosition);
-	} else {
+	} else if (!rect().contains(mapFromGlobal(globalPosition))) {
 		hideMenu();
 	}
 }
@@ -469,7 +472,7 @@ void PopupMenu::handleMousePress(QPoint globalPosition) {
 void PopupMenu::handleMouseRelease(QPoint globalPosition) {
 	if (_parent) {
 		_parent->forwardMouseRelease(globalPosition);
-	} else {
+	} else if (!rect().contains(mapFromGlobal(globalPosition))) {
 		hideMenu();
 	}
 }
