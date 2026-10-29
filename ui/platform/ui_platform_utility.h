@@ -34,6 +34,7 @@ void DeInitOnTopPanel(not_null<QWidget*> panel);
 void ReInitOnTopPanel(not_null<QWidget*> panel);
 
 void ShowOverAll(not_null<QWidget*> widget, bool canFocus = true);
+void SetWindowCornerRounded(not_null<QWidget*> widget);
 void IgnoreAllActivation(not_null<QWidget*> widget);
 void ClearTransientParent(not_null<QWidget*> widget);
 struct ForeignParent {

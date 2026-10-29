@@ -39,6 +39,9 @@ inline void SetWindowMargins(not_null<QWidget*> widget, const QMargins &margins)
 inline void ShowWindowMenu(not_null<QWidget*> widget, const QPoint &point) {
 }
 
+inline void SetWindowCornerRounded(not_null<QWidget*> widget) {
+}
+
 inline void RestoreWindow(not_null<QWidget*> widget) {
 }
 

@@ -20,6 +20,7 @@
 #include "ui/screen_reader_mode.h"
 #include "ui/ui_utility.h"
 
+#include <map>
 #include <QtGui/QtEvents>
 #include <QtGui/QPainter>
 #include <QtGui/QScreen>
@@ -1007,6 +1008,9 @@ void PopupMenu::showPrepared(TriggeredSource source) {
 	}
 	show();
 	Platform::ShowOverAll(this);
+	if (!_useTransparency && ::Platform::IsWindows()) {
+		Platform::SetWindowCornerRounded(this);
+	}
 	raise();
 	activateWindow();
 	if (Ui::ScreenReaderModeActive()) {

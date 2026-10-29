@@ -13,6 +13,9 @@
 #include <QtCore/QAbstractNativeEventFilter>
 
 #include <windows.h>
+#include <dwmapi.h>
+
+#pragma comment(lib, "dwmapi.lib")
 
 #include "base/event_filter.h"
 #include <QTimer>
@@ -22,6 +25,20 @@ namespace Ui::Platform {
 
 bool IsApplicationActive() {
 	return QApplication::activeWindow() != nullptr;
+}
+
+void SetWindowCornerRounded(not_null<QWidget*> widget) {
+	widget->createWinId();
+	const auto handle = reinterpret_cast<HWND>(widget->winId());
+	if (!handle) {
+		return;
+	}
+	DWM_WINDOW_CORNER_PREFERENCE preference = DWMWCP_ROUND;
+	::DwmSetWindowAttribute(
+		handle,
+		DWMWA_WINDOW_CORNER_PREFERENCE,
+		&preference,
+		sizeof(preference));
 }
 
 void IgnoreAllActivation(not_null<QWidget*> widget) {

@@ -26,6 +26,9 @@ inline void ReInitOnTopPanel(not_null<QWidget*> panel) {
 inline void ShowOverAll(not_null<QWidget*> widget, bool canFocus) {
 }
 
+inline void SetWindowCornerRounded(not_null<QWidget*> widget) {
+}
+
 inline void AcceptAllMouseInput(not_null<QWidget*> widget) {
 }
 
